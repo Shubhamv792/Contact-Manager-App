@@ -1,6 +1,11 @@
-import { Component, OnInit,NgZone,HostListener } from '@angular/core';
+import { Component, OnInit,NgZone,HostListener, ViewChild } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { UserService } from 'src/app/services/user.service';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/models/user';
+import { Router } from '@angular/router';
+import { MatSidenav } from '@angular/material';
 
 const SMALL_WIDTH_BREAKPOINT = 720;
 
@@ -12,7 +17,8 @@ const SMALL_WIDTH_BREAKPOINT = 720;
 export class SidenavComponent implements OnInit {  
 
   private isSmall:boolean = false;
-  private breakPointObserver:BreakpointObserver;
+  private users:Observable<User[]>;
+  @ViewChild(MatSidenav) sidenav:MatSidenav;
   // private mediaList:MediaQueryList;
   // constructor(private mediaMatcher:MediaMatcher) {
   //   // MediaMatcher does not wrap ngZone 
@@ -24,22 +30,33 @@ export class SidenavComponent implements OnInit {
   //     this.isSmall = mql.matches;
   //   });  
   // }
-  constructor(pointObserver:BreakpointObserver){
+  constructor(private breakPointObserver:BreakpointObserver,private userService:UserService,private router:Router){
     // const layoutChanges = breakPointObserver.observe([`max-width:720px`]);
     // layoutChanges.subscribe(result=>{
     //   console.log("Test");
     //   this.isSmall = result.matches;
     // });
-    this.breakPointObserver = pointObserver;
+    
   }
 
   ngOnInit() {
+    this.users = this.userService.getUsers();
+    this.userService.loadAll();
+    this.router.events.subscribe(()=>{
+      if(this.isScreenSmall()){
+        this.sidenav.close();
+      }
+    });
+    // Handle this in main content component 
+    // this.users.subscribe(data=>{
+    //   if(data.length > 0)
+    //     this.router.navigate(['/contactmanager',data[0].id]);
+      
+    // });
   }
 
   isScreenSmall():boolean{
-    this.isSmall = this.breakPointObserver.isMatched('(max-width: 599px)');
-    console.log(this.isSmall);
+    this.isSmall = this.breakPointObserver.isMatched(`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`);
     return this.isSmall;
-
   }
 }
