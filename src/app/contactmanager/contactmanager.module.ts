@@ -6,10 +6,11 @@ import { MainContentComponent } from './components/main-content/main-content.com
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { Routes,RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatCheckboxModule, MatButtonModule, MatIconModule, MatToolbarModule, MatListModule, MatCardModule, MatSidenavModule, MatProgressSpinnerModule } from '@angular/material';
+import { MatCheckboxModule, MatButtonModule, MatIconModule, MatToolbarModule, MatListModule, MatCardModule, MatSidenavModule, MatProgressSpinnerModule, MatTabsModule } from '@angular/material';
 import {LayoutModule} from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from '../services/user.service';
+import { NotesComponent } from './components/notes/notes.component';
 
 
 const routes:Routes = [
@@ -21,10 +22,11 @@ const routes:Routes = [
   {path:'**',redirectTo:''}
 ];
 @NgModule({
-  declarations: [ContactmanagerAppComponent, ToolbarComponent, MainContentComponent, SidenavComponent],
+  declarations: [ContactmanagerAppComponent, ToolbarComponent, MainContentComponent, SidenavComponent, NotesComponent],
   imports: [
     CommonModule,
     HttpClientModule,
+    MatTabsModule,
     LayoutModule,
     MatCheckboxModule,
     MatButtonModule,

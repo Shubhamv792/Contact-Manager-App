@@ -42,7 +42,7 @@ export class SidenavComponent implements OnInit {
   ngOnInit() {
     this.users = this.userService.getUsers();
     this.userService.loadAll();
-    this.router.events.subscribe(()=>{
+    this.router.events.subscribe((event)=>{
       if(this.isScreenSmall()){
         this.sidenav.close();
       }
