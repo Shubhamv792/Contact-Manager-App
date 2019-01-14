@@ -6,11 +6,12 @@ import { MainContentComponent } from './components/main-content/main-content.com
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { Routes,RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatCheckboxModule, MatButtonModule, MatIconModule, MatToolbarModule, MatListModule, MatCardModule, MatSidenavModule, MatProgressSpinnerModule, MatTabsModule } from '@angular/material';
+import { MatCheckboxModule, MatButtonModule, MatIconModule, MatToolbarModule, MatListModule, MatCardModule, MatSidenavModule, MatProgressSpinnerModule, MatTabsModule, MatTableModule, MatPaginatorModule, MatInputModule, MatSortModule, MatMenuModule, MatDialogModule, MatFormFieldModule, MatOptionModule, MatSelectModule } from '@angular/material';
 import {LayoutModule} from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from '../services/user.service';
 import { NotesComponent } from './components/notes/notes.component';
+import { NewContactDialogComponent } from './components/new-contact-dialog/new-contact-dialog.component';
 
 
 const routes:Routes = [
@@ -22,15 +23,24 @@ const routes:Routes = [
   {path:'**',redirectTo:''}
 ];
 @NgModule({
-  declarations: [ContactmanagerAppComponent, ToolbarComponent, MainContentComponent, SidenavComponent, NotesComponent],
+  declarations: [ContactmanagerAppComponent, ToolbarComponent, MainContentComponent, SidenavComponent, NotesComponent, NewContactDialogComponent],
   imports: [
     CommonModule,
     HttpClientModule,
+    MatDialogModule,
+    MatPaginatorModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatMenuModule,
+    MatFormFieldModule,
+    MatSortModule,
     MatTabsModule,
     LayoutModule,
+    MatInputModule,
     MatCheckboxModule,
     MatButtonModule,
     MatIconModule,
+    MatTableModule,
     MatProgressSpinnerModule,
     MatToolbarModule,
     MatListModule,
@@ -39,6 +49,7 @@ const routes:Routes = [
     FlexLayoutModule,
     RouterModule.forChild(routes)
   ],
-  providers:[UserService]
+  providers:[UserService],
+  entryComponents:[NewContactDialogComponent]
 })
 export class ContactmanagerModule { }

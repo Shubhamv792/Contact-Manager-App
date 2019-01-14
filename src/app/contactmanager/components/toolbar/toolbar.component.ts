@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { Output } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { NewContactDialogComponent } from '../new-contact-dialog/new-contact-dialog.component';
 
 
 @Component({
@@ -10,9 +12,18 @@ import { Output } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 @Output() toggleSidenav = new EventEmitter<void>();
-  constructor() { }
+  constructor(private dialog:MatDialog) { }
 
   ngOnInit() {
   }
-
+  openAddContactDialog():void{
+    let dialogRef = this.dialog.open(NewContactDialogComponent,{
+      width:'450px'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("The Dialog was closed");
+      console.log(result);
+    });
+  }
+  
 }
