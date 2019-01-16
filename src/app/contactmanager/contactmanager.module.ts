@@ -6,12 +6,13 @@ import { MainContentComponent } from './components/main-content/main-content.com
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { Routes,RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatCheckboxModule, MatButtonModule, MatIconModule, MatToolbarModule, MatListModule, MatCardModule, MatSidenavModule, MatProgressSpinnerModule, MatTabsModule, MatTableModule, MatPaginatorModule, MatInputModule, MatSortModule, MatMenuModule, MatDialogModule, MatFormFieldModule, MatOptionModule, MatSelectModule } from '@angular/material';
+import { MatCheckboxModule, MatButtonModule, MatIconModule, MatToolbarModule, MatListModule, MatCardModule, MatSidenavModule, MatProgressSpinnerModule, MatTabsModule, MatTableModule, MatPaginatorModule, MatInputModule, MatSortModule, MatMenuModule, MatDialogModule, MatFormFieldModule, MatOptionModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule, MatSnackBarModule } from '@angular/material';
 import {LayoutModule} from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from '../services/user.service';
 import { NotesComponent } from './components/notes/notes.component';
 import { NewContactDialogComponent } from './components/new-contact-dialog/new-contact-dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 const routes:Routes = [
@@ -28,8 +29,13 @@ const routes:Routes = [
     CommonModule,
     HttpClientModule,
     MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatPaginatorModule,
     MatOptionModule,
+    MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatSelectModule,
     MatMenuModule,
     MatFormFieldModule,
