@@ -4,6 +4,7 @@ import { Output } from '@angular/core';
 import { MatDialog, MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material';
 import { NewContactDialogComponent } from '../new-contact-dialog/new-contact-dialog.component';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class ToolbarComponent implements OnInit {
         this.openSnackBar("Contact Added","navigate")
           .onAction().subscribe(() =>{
             // navigate to the conatct just Added
-            this.router.navigate(['/contactmanager',result.id]);
+            this.router.navigate(['/contactmanager',result._id]);
           });
       }
     });

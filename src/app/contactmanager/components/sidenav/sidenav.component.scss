@@ -21,3 +21,12 @@
 .wrapper{
     margin:50px;
 }
+
+.userInfo{
+    display: flex;
+    flex-direction: row;
+    .userDetails{
+        display: flex;
+        flex-direction: column;
+    }
+}

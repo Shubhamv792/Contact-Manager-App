@@ -1,25 +1,31 @@
+//Second Approach do try this way too.
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user'
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Observable } from 'rxjs/internal/Observable';
 import { Contact } from '../models/contact';
+import { Note } from '../models/note';
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
   private dataStore:{
-    users:User[];
+    user:User;
+    contacts:Contact[];
+    notes:Note[];
   }
   private _users:BehaviorSubject<User>;
-  
+  private _contacts:BehaviorSubject<Contact[]>;
+  private notes:BehaviorSubject<Note[]>;
   constructor(private httpClient:HttpClient) {
-    this.dataStore = {users:[]};
+    this.dataStore = {user:new User()};
     this._users= new BehaviorSubject<User>(new User());
   }
 
-  getContacts():Observable<Contact[]>{
+  getContacts():Observable<Contact>{
     return this._users['contacts'].asObservable();
   }
 
