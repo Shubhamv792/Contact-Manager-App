@@ -18,7 +18,7 @@ export class SidenavComponent implements OnInit {
   isDarkTheme:boolean = false;
   dir:string = "ltr";
   private isSmall:boolean = false;
-  private users:Observable<User[]>;
+  users:Observable<User[]>;
   @ViewChild(MatSidenav) sidenav:MatSidenav;
   // private mediaList:MediaQueryList;
   // constructor(private mediaMatcher:MediaMatcher) {
